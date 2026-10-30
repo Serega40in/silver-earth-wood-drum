@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #140e0a;
+  --color-panel: #241910;
+  --color-cream: #f6ead6;
+  --color-dim: #cbbba6;
+  --color-gold: #f0b429;
+  --color-forest: #1f6b45;
+  --color-flame: #e07a4a;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Nunito", "Segoe UI", sans-serif;
+  --radius: 1rem;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  #root,
+  body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+}
+
+.game-shell {
+  position: relative;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-ink);
+  touch-action: none;
+  user-select: none;
+}
+
+.game-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    transparent 42%,
+    color-mix(in srgb, var(--color-ink) 55%, transparent) 100%
+  );
+}
+
+.touch-only {
+  display: none;
+}
+
+@media (pointer: coarse), (max-width: 860px) {
+  .touch-only {
+    display: block;
+  }
+}
+
+@keyframes lyric-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lyric-in {
+  animation: lyric-in 280ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lyric-in {
+    animation: none;
+  }
+}
