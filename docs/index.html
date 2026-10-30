@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#140e0a" />
+    <meta name="description" content="Искорка — танцующий домик: поёт, собирает монетки и строит модульные домики." />
+    <title>Искорка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,700;1,9..144,560&family=Nunito:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="stage" aria-label="Сцена Искорки"></canvas>
+      <div class="vignette"></div>
+
+      <div id="hud" class="hud hidden">
+        <header class="hud-top">
+          <div class="pill gold">
+            <span class="pill-label">монеты</span>
+            <span id="coinCount" class="pill-value">12</span>
+            <span id="combo" class="combo hidden"></span>
+          </div>
+          <div class="lyrics">
+            <p id="syl" class="syl"></p>
+            <p id="line" class="line"></p>
+          </div>
+          <div class="hud-right">
+            <div class="pill">
+              <span class="pill-label">домики</span>
+              <span id="houseCount" class="pill-value">0/2</span>
+            </div>
+            <button id="muteBtn" class="icon-btn" type="button" aria-label="Звук">♪</button>
+          </div>
+        </header>
+        <p id="toast" class="toast hidden"></p>
+        <div class="hud-bottom">
+          <div id="buildTray" class="build-tray hidden"></div>
+          <div class="mode-row">
+            <div id="joystick" class="joystick touch-only" aria-label="Джойстик">
+              <div id="knob" class="knob"></div>
+            </div>
+            <div class="modes">
+              <button data-mode="dance" class="mode active" type="button">Танец</button>
+              <button data-mode="run" class="mode" type="button">Бег</button>
+              <button data-mode="build" class="mode forest" type="button">Стройка</button>
+            </div>
+            <div class="spacer touch-only"></div>
+          </div>
+          <p id="hint" class="hint">WASD · Пробел · 1–8 · R · M</p>
+        </div>
+      </div>
+
+      <section id="startCard" class="start-card">
+        <p class="eyebrow">3D-мультик</p>
+        <h1>Искорка</h1>
+        <p class="lead">
+          Танцующий домик в блестящем плаще. Поёт на сцене, собирает монетки и строит модульные домики.
+        </p>
+        <button id="startBtn" class="start-btn" type="button">Начать</button>
+      </section>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./game.js"></script>
+  </body>
+</html>
